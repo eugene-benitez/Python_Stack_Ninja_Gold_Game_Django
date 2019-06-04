@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ninja Gold</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ninja_gold/css/style.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="gold">
+            <h3>Your Gold: </h3>
+            <p> {{ request.session.gold }}</p>
+        </div>
+        <div class="center">
+            <table>
+                <td> Farm <p>(earns 10-20 gold)</p> <br>
+                    <form action="/farm" method="post" name="Farm">
+                        {% csrf_token %}
+                        <button>Find Gold!</button>
+                    </form>
+                </td>
+                <td> Cave <p>(earns 5-10 gold)</p> <br>
+                    <form action="/cave" method="post" name="Cave">
+                        {% csrf_token %}
+                        <button>Find Gold!</button>
+                    </form>
+                </td>
+                <td> House <p>(earns 2-5 gold)</p> <br>
+                    <form action="/house" method="post" name="House">
+                        {% csrf_token %}
+                        <button>Find Gold!</button>
+                    </form>
+                </td>
+                <td> Casino <p>(earns/takes 0-50 gold)</p> <br>
+                    <form action="/casino" method="post" name="Casino">
+                        {% csrf_token %}
+                        <button>Find Gold!</button>
+                    </form>
+                </td>
+            </table>
+        </div>
+        <h3>Activities:</h3>
+        <div class="activity">
+            {% for i in lists %}
+            <p>{{i}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
